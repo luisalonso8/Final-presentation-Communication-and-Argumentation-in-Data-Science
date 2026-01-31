@@ -1,0 +1,315 @@
+---
+title: "What Data Science Can Do: Predicting Crime in Mexico"
+subtitle: "Understanding Drug Trafficking, Violence, and Predictive Analytics"
+author: "Luis Alvarez Portugal"
+date: "January 26, 2026"
+format: 
+  revealjs:
+    theme: default
+    slide-number: true
+    transition: slide
+    chalkboard: true
+    controls: true
+    progress: true
+    menu:
+      side: left
+      width: normal
+---
+
+## Homicide Trends in Mexico {.scrollable}
+
+::: {.columns}
+::: {.column width="70%"}
+![](homicides_Mexico.png){width="100%"}
+
+::: {style="font-size: 0.6em; color: gray; margin-top: 10px;"}
+Source: INEGI, Mexican National Statistics Institute
+:::
+:::
+
+::: {.column width="30%"}
+
+::: {.fragment .fade-in}
+- **First wave:** 2007-2011 (Drug war escalation)
+:::
+
+::: {.fragment .fade-in}
+- **Second wave:** 2016-2020 (Cartel fragmentation)
+:::
+:::
+:::
+
+## Drug Trafficking Hubs
+
+::: {.columns}
+::: {.column width="50%"}
+### Key Hubs
+![](drug_hubs.png)
+
+::: {style="font-size: 0.6em; color: gray; margin-top: 10px;"}
+Source: DEA, Mexican Federal Government
+:::
+:::
+
+::: {.column width="50%"}
+### Trafficking Routes
+![](drug_routes_mexico.png)
+
+::: {style="font-size: 0.6em; color: gray; margin-top: 10px;"}
+Source: United Nations, U.S. Government
+:::
+:::
+:::
+
+::: {.fragment}
+**Strategic locations are needed to control the flow of drugs to U.S. markets**
+:::
+
+## The U.S. Demand Side {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+### Overdose Crisis
+![](overdose_deaths.png){width="95%" fig-align="center"}
+
+::: {style="font-size: 0.6em; color: gray; margin-top: 10px;"}
+Source: CDC, National Vital Statistics System
+:::
+
+::: {.fragment}
+**10 times increase** from 2002-2023
+:::
+:::
+
+::: {.column width="50%"}
+### Firearms Supply
+![](prices_firearms.png){width="95%" fig-align="center"}
+
+::: {style="font-size: 0.6em; color: gray; margin-top: 10px;"}
+Source: ATF
+:::
+
+::: {.fragment}
+**23% price decline** (2004-2020)
+:::
+:::
+:::
+
+::: {.fragment}
+**Toxic reinforcing spiral:** Drugs move north to meet U.S. demand while guns move south and amplify violence in Mexico.
+:::
+
+## Global Illicit Market Scale
+
+::: {style="text-align: center;"}
+![](illicit_market_values_clean.png){width="60%"}
+
+::: {style="font-size: 0.6em; color: gray; margin-top: 5px;"}
+Source: UNODC
+:::
+:::
+
+::: {.incremental}
+- Human trafficking: **$150B** (largest market)
+- Drug markets combined: **$253B**
+:::
+
+## The Impunity Problem
+
+::: {style="text-align: center;"}
+![](mexico_impunity.png){width="85%"}
+
+::: {style="font-size: 0.6em; color: gray; margin-top: 10px;"}
+Sources: INEGI, SNSP, Harrendorf y Smit; México Evalúa
+:::
+:::
+
+::: {.fragment .highlight-red}
+**81.4% impunity rate** in Mexico vs 24% internationally
+:::
+
+::: {.fragment}
+Citizens only report **20% of crimes** to authorities
+:::
+
+::: {.fragment}
+→ Criminal organizations operate with minimal consequences
+:::
+
+## Can we predict crime rates? {background-color="#E8F4F8"}
+
+::: {.columns style="font-size: 0.85em;"}
+::: {.column width="80%"}
+::: {.fragment}
+### The Challenge
+:::
+
+::: {.fragment}
+Predict crime rates for each Mexican state **ahead of time**
+
+**Approach:** State-year predictions
+
+- **Training:** 2011-2015 data
+- **Prediction:** 2016-2018 outcomes
+:::
+:::
+
+::: {.column width="80%"}
+::: {.fragment}
+### The Method: LASSO regression
+:::
+
+::: {.incremental style="font-size: 0.9em;"}
+1. **Input:** Crime rates and socio-economic variables
+2. **Process:** Identify important predictors
+3. **Output:** Predictions with key factors 
+4. **Validation:** Compare predictions to actual outcomes
+:::
+:::
+:::
+
+## How LASSO Works {background-color="#E8F4F8"}
+
+::: {.columns}
+::: {.column width="50%"}
+### Data Structure
+
+**Dependent variable:**
+- Crime rate (what we predict)
+
+**Independent variables:**
+- Economic indicators
+- Past crime patterns (lags)
+- Demographic factors
+- Geographic features
+:::
+
+::: {.column width="50%"}
+### Model Selection
+
+::: {.fragment}
+**Alpha parameter** controls how many predictors to keep
+:::
+
+::: {.fragment}
+**Optimization:** Minimize prediction errors (Mean Residual Sum of Squares)
+:::
+
+::: {.fragment}
+**Result:** Sparse model with only important factors
+:::
+:::
+:::
+
+## Model Performance {background-color="#E8F4F8"}
+
+::: {.fragment style="font-size: 0.75em;"}
+**How the model performs:** Model explains **92% of variation** in crime rates
+:::
+
+::: {.columns style="font-size: 0.8em;"}
+::: {.column width="50%"}
+### What This Means
+
+::: {.incremental style="font-size: 0.9em;"}
+- This means strong predictive capability
+- Reliable for policy planning
+- Many crime patterns are systematic, not random
+:::
+:::
+
+::: {.column width="50%"}
+### Limitations
+
+::: {.incremental style="font-size: 0.9em;"}
+- State-level only (not municipality)
+- Historical patterns may change
+- We need consistent data collection over time
+:::
+:::
+:::
+
+## Main Results {background-color="#E8F4F8"}
+
+::: {.columns}
+::: {.column width="33%"}
+### Geographic Patterns
+
+::: {.fragment}
+**High persistence states:**
+- Baja California
+- Tamaulipas
+- Guerrero
+:::
+
+::: {.fragment}
+Crime patterns are **sticky** over time
+:::
+:::
+
+::: {.column width="33%"}
+### Crime Type Patterns
+
+::: {.fragment}
+**Non-violent:**
+- Common theft (most frequent)
+:::
+
+::: {.fragment}
+**Violent:**
+- Homicide (most frequent)
+:::
+:::
+
+::: {.column width="33%"}
+### Predictive Factors
+
+::: {.fragment}
+**Key insight:**
+Each crime type has **different determinants**
+:::
+
+::: {.fragment}
+There is no "single size fits all" model
+:::
+:::
+:::
+
+
+## Policy Implications
+
+::: {.columns}
+::: {.column width="50%"}
+### Integrated Approach 
+
+::: {.incremental}
+- Target impunity to disrupt criminal operations
+- Focus resources on main drug trafficking hubs
+- Consider cross-border dynamics (U.S.-Mexico)
+:::
+:::
+
+::: {.column width="50%"}
+### Predictive Analytics Value
+
+::: {.incremental}
+- Enable **proactive** interventions
+- Understand better the crime-specific factors
+- Design targeted policies by crime type
+:::
+:::
+:::
+
+## Conclusions
+
+::: {.r-fit-text}
+Data + Analytics = Better Policy
+:::
+
+::: {.incremental}
+- Illicit markets produce many predictable patterns (not all)
+- Violence concentrates in specific locations (border states and some central regions)
+- Systemic impunity undermines civic trust
+- Predictive models can help more effective public safety interventions
+- Each crime type needs a tailored approach (there is not a single suit for all)
+:::
